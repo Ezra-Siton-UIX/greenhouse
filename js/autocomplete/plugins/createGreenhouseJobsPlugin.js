@@ -185,7 +185,7 @@ export function createGreenhouseJobsPlugin(options) {
       control_url_params(state.query, state.context.office, state.context.department, setting.redirect_on_select, false);
       
       //control_url_params(state.query, state.context.office, state.context.department, redirect_on_select);
-      if(location.pathname=="/" || location.pathname=="/404"){
+      if(location.pathname !== setting.baseURL){
         /* on homepage we dont use the state - its "all" by deafult + we do not use URL params */
 
         /* if 🏠 Redirect to search result */
