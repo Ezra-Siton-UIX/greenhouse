@@ -155,3 +155,14 @@ function update_dropdown_Context(value){
 }
 
 onLoad();
+
+$( "[data_clear_search]" ).click(function() {
+  setQuery("");
+
+  offices_dropdown
+    .dropdown('set selected', "all");
+  departments_dropdown
+    .dropdown('set selected', "all");
+
+
+});
