@@ -244,28 +244,24 @@ renderJob();
 let backButton = document.querySelector('[data-btn-back]');
 
 if(backButton !== null){
+  
+  let office = sessionStorage.getItem('office');
+  let department = sessionStorage.getItem('department');
+  let query = sessionStorage.getItem('query');
+  
+  if(query == null){
+    query = "";
+  }
+  
+  let url = `${setting.baseURL}?query=${query}&office=${office}&department=${department}`;
+  
   backButton.addEventListener('click', function(event) {
-    event.preventDefault();
-    let referrer = document.referrer;
-    let history_from_the_website = referrer.includes("lightricks");
-    if(history_from_the_website){
-      /* if 🏠 Redirect to search result */
-      const url = new URL(window.location); 
-
-      let office = sessionStorage.getItem('office') == null ? "all" : sessionStorage.getItem('office');
-      let department = sessionStorage.getItem('department') == null ? "all" : sessionStorage.getItem('department')
-
-      let url_redirect = `${setting.baseURL}?query=&office=${office}&department=${department}`;
-      console.log(url_redirect);
-      window.location.href = url_redirect;
-
-      //window.history.back() 
-    }else{
-      window.location.href = `/${setting.baseURL}`;
-    }
+    window.location.href = url;
   });
 
 }
+
+
 
 
 
