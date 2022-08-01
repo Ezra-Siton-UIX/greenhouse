@@ -158,7 +158,7 @@ onLoad();
 
 $( "[data_clear_search]" ).click(function() {
   setQuery("");
-
+  refresh();
   offices_dropdown
     .dropdown('set selected', "all");
   departments_dropdown
