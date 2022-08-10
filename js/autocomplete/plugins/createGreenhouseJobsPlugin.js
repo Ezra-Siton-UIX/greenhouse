@@ -111,7 +111,7 @@ export function createGreenhouseJobsPlugin(options) {
 
             // 6. Now display this items under search panel (Limit by slice)
             if(query.length > 0){
-              return _.slice(uniq_jobs_by_title, 0, 8);
+              return _.slice(uniq_jobs_by_title, 0, 5);
             }
 
           },/* ### End GetItems() */  
