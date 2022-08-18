@@ -16,7 +16,7 @@ import {render_offices_collection_list, render_departments_collection_list} from
 
 function onLoad(){
   /* deafult to "all" homepage on load */
-  if(location.pathname =="/"){
+  if(location.pathname !== setting.baseURL){
     /* localStorage **/
     sessionStorage.setItem('office', "all");
     sessionStorage.setItem('department', "all");
@@ -24,8 +24,8 @@ function onLoad(){
   }
   addClassToAttributeSelector("animate__animated", "animate__animated");// 👉️ 
   $(".animate__animated").addClass('animate__animated', 'animate__fadeIn animate__faster');// 👉️ 
-  
-  
+
+
 
 }
 
@@ -136,7 +136,7 @@ function update_dropdown_Context(value){
   **/
   sessionStorage.setItem('office', office_dropdown_value);
   sessionStorage.setItem('department', departments_dropdown_value);
-  sessionStorage.setItem('query', v_query);
+  //sessionStorage.setItem('query', v_query);
 
   setContext(
     {   
@@ -144,7 +144,7 @@ function update_dropdown_Context(value){
       "department": departments_dropdown_value
     }
   )
-  setQuery(v_query);
+  //setQuery(v_query);
 
   /* urlParams **/
   control_url_params(v_query, office_dropdown_value, departments_dropdown_value, false, false);
