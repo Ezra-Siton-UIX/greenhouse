@@ -8,13 +8,14 @@ export const analyticsPlugin = {
     //alert("subscribe");
     /* ######### ON LOAD FUNCTION Update data related to URL params ########## */
     refresh();
-    
+
     /* #################################### 
                     onSelect (item on the list)
     ####################################### */
     onSelect(({ item, state } ) => {/* 👈👈👈👈👈👈👈👈👈👈👈👈👈👈👈👈👈👈👈👈👈👈👈👈 */
       control_url_params(item.item.title, state.context.office, state.context.department, setting.redirect_on_select, false);
       setQuery(item.item.title);
+      sessionStorage.setItem('query', item.item.title);
       refresh();
       /* if on click on search item you search (like google) use item.item.title else use feild query */
       if(setting.redirect_on_select){
