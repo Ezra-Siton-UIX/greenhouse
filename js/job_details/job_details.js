@@ -4,7 +4,9 @@ import { convert_br_to_li_and_generateList } from "./convert_br_to_ul_list.js";
 import { setting } from "../utility/global_setting.js"
 import { addClassToAttributeSelector } from "../utility/utility_functions.js";
 import { getItems } from "../utility/getItems.js";
-let job_id = window.location.search.substring(1);
+
+const params = new URLSearchParams(window.location.search)
+const job_id = params.get('gh_jid');
 
 /* IMPORTANT - API node: Use id NOT internal_job_id */
 
@@ -39,9 +41,14 @@ const api_job = `https://boards-api.greenhouse.io/v1/boards/${setting.api_board_
 async function renderJob() {
   let job = await getJob(api_job);
   /* JOB not found */
-  if(job.status == 404 || job_id == ""){
-    console.log("not found");
-    // window.location.href = "/not-found";
+  if(job.status == 404 || job_id == null  || job_id == ""){
+    console.log("JOB NOT FOUND");
+    const data_error = document.querySelector('[data-error]');
+    if(document.querySelector('[data-loader]') !== null)document.querySelector('[data-loader]').style.display = "none";
+    if($("[data-job-position]"))$("[data-job-position]").remove();
+    $("[data-webflow]").remove();
+    data_error.style.display = "block";
+    data_error.style.opacity = "1";
     return;
   }
 
@@ -250,10 +257,3 @@ if(backButton !== null){
   });
 
 }
-
-
-
-
-
-
-
