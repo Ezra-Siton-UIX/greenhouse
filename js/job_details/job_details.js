@@ -40,16 +40,8 @@ async function renderJob() {
   let job = await getJob(api_job);
   /* JOB not found */
   if(job.status == 404 || job_id == ""){
-    window.location.href = "/not-found";
-    /*
-    const data_error = document.querySelector('[data-error]');
-    document.querySelector('[data-loader]').style.display = "none";
-    $("[data-job-position]").remove();
-    $("[data-webflow]").remove();
-    data_error.style.display = "block";
-    data_error.style.opacity = "1";
-    */
-    /* remove the bottom sections */
+    console.log("not found");
+    // window.location.href = "/not-found";
     return;
   }
 
