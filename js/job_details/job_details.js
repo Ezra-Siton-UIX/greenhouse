@@ -43,6 +43,9 @@ async function renderJob() {
   /* JOB not found */
   if(job.status == 404 || job_id == null  || job_id == ""){
     console.log("JOB NOT FOUND");
+    
+    window.location.href = "/not-found";
+    
     const data_error = document.querySelector('[data-error]');
     if(document.querySelector('[data-loader]') !== null)document.querySelector('[data-loader]').style.display = "none";
     if($("[data-job-position]"))$("[data-job-position]").remove();
