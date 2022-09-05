@@ -29,7 +29,6 @@ export async function reformat_api_data(departments_tree, offices, show_empty_it
   let group_office = _.groupBy(jobs, "offices[0].name"); /* group jobs by office */
   let office_values =  data_under_office(offices, group_office);/* list of objects { name, count, order } */
   let departments_values = data_under_department(departments_tree, show_empty_items);/* list of objects { name, count, order } */
-  departments_values.pop();/* remove no department item */
   
   //render_items(office_values,departments_values);
   // Use of _.sortBy() method
@@ -78,7 +77,6 @@ function data_under_department(departments, show_empty_items){
       let mode_showEmpty = true;
       let toShowEmpty = total_jobs_under_parent_department == 0 || mode_showEmpty ? true : false;
       let href = `${setting.baseURL}?query=&office=all&department=${item_value}`;
-
 
       var obj = {
         list_js_name: item.name,
