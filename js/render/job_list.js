@@ -146,4 +146,3 @@ function createJob({item}, index, jobsList){
 function formatString(string){
   return string.replace(/\s+/g,'-').toLowerCase()
 }
-
