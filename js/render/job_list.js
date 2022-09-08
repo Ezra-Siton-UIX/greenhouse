@@ -113,7 +113,8 @@ function createJob({item}, index, jobsList){
   let list_js_child_department = item.departments.length > 0 ? item.departments[0].name : "No department";
   let list_js_parent_department = parent_department !== "no_childs" ? parent_department : "";
   let list_js_id = item.id;
-  let list_js_href = `/${setting.jobPositionUrl}?gh_jid=${item.id}&${formatString(list_js_title)}_&office=${formatString(list_js_office)}&team=${formatString(list_js_parent_department == "" ? list_js_child_department :  list_js_parent_department)}`;
+  let list_js_href = `/${setting.jobPositionUrl}?gh_jid=${item.id}&${formatString(list_js_title)}_&office=${formatString(list_js_office)}&team=${formatString(list_js_parent_department == "" ? list_js_child_department :  list_js_parent_department)}&gh_src=${sessionStorage.getItem("gh_src") ? sessionStorage.getItem("gh_src") : ""}`;
+  let id = item.id.toString();
   let id = item.id.toString();
 
   /* add */
